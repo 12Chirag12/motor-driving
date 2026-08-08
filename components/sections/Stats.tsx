@@ -1,29 +1,30 @@
-"use client";
-
 import { stats } from "@/lib/data";
-import { motion } from "framer-motion";
 
 export default function Stats() {
   return (
-    <section className="bg-white py-20">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 lg:grid-cols-4">
-        {stats.map((item, index) => (
-          <motion.div
-            key={item.label}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.15 }}
-            viewport={{ once: true }}
-            className="rounded-2xl border bg-white p-8 text-center shadow-sm"
+    <section className="bg-white px-5 py-10 sm:px-6 lg:px-8">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm lg:grid-cols-4">
+        {stats.map((stat, index) => (
+          <div
+            key={stat.label}
+            className={`flex flex-col items-center justify-center px-4 py-7 text-center sm:px-6 ${
+              index !== stats.length - 1
+                ? "border-b border-slate-200 lg:border-b-0 lg:border-r"
+                : ""
+            } ${
+              index === 0 || index === 2
+                ? "border-r border-slate-200"
+                : ""
+            }`}
           >
-            <h2 className="text-5xl font-bold text-[#1E40AF]">
-              {item.value}
-            </h2>
-
-            <p className="mt-3 text-gray-600">
-              {item.label}
+            <p className="text-3xl font-extrabold tracking-tight text-[#1E40AF] sm:text-4xl">
+              {stat.value}
             </p>
-          </motion.div>
+
+            <p className="mt-2 text-sm font-medium text-slate-600 sm:text-base">
+              {stat.label}
+            </p>
+          </div>
         ))}
       </div>
     </section>

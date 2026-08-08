@@ -16,7 +16,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className="space-y-10 lg:space-y-14">
+      <main className="w-full overflow-hidden">
 
         {/* Home */}
         <section id="home">

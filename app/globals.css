@@ -39,3 +39,30 @@ h5 {
 main {
   overflow-x: hidden;
 }
+/* ================================
+   Global Layout & Responsive Fixes
+   ================================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+section {
+  scroll-margin-top: 90px;
+}

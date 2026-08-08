@@ -1,103 +1,113 @@
 import { Check, Clock3 } from "lucide-react";
+
 import { courses } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
-import PrimaryButton from "@/components/ui/PrimaryButton";
 
 export default function Courses() {
   return (
-    <section className="bg-white py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="bg-white px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <div className="mx-auto w-full max-w-7xl">
+
         <SectionHeading
           title="Driving Courses"
-          subtitle="Choose the training program that best fits your experience and learning goals."
+          subtitle="Choose the training program that best matches your driving experience and goals."
         />
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {courses.map((course, index) => (
-            <div
+            <article
               key={course.title}
-              className={`
-                relative
-                flex
-                h-full
-                flex-col
-                rounded-2xl
-                border
-                bg-white
-                p-8
-                shadow-sm
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:shadow-xl
-                ${
-                  index === 1
-                    ? "border-[#1E40AF] ring-2 ring-blue-100"
-                    : "border-gray-100"
-                }
-              `}
+              className={`relative flex h-full flex-col rounded-2xl border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-7 ${
+                index === 1
+                  ? "border-[#1E40AF] ring-1 ring-[#1E40AF]/10"
+                  : "border-slate-200"
+              }`}
             >
-              {/* Recommended Badge */}
+              {/* Popular badge */}
               {index === 1 && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#FACC15] px-4 py-1 text-xs font-bold text-[#1F2937] shadow-sm">
-                  MOST POPULAR
-                </span>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#1E40AF] px-4 py-1.5 text-xs font-bold text-white shadow-sm">
+                  Most Popular
+                </div>
               )}
 
-              {/* Course Name */}
-              <h3 className="text-2xl font-bold text-[#1F2937]">
-                {course.title}
-              </h3>
+              {/* Course Header */}
+              <div>
+                <p className="text-sm font-semibold text-[#1E40AF]">
+                  Driving Program
+                </p>
 
-              {/* Duration */}
-              <div className="mt-4 flex items-center gap-2 text-gray-600">
-                <Clock3 className="h-5 w-5 text-[#1E40AF]" />
-                <span className="font-medium">{course.duration}</span>
+                <h3 className="mt-2 text-xl font-bold tracking-tight text-[#1F2937] sm:text-2xl">
+                  {course.title}
+                </h3>
+
+                <div className="mt-4 flex items-center gap-2 text-sm text-slate-500">
+                  <Clock3 size={17} className="text-[#1E40AF]" />
+                  <span>{course.duration}</span>
+                </div>
               </div>
 
               {/* Price */}
-              <div className="mt-6">
-                <span className="text-4xl font-bold text-[#1E40AF]">
+              <div className="mt-6 border-y border-slate-100 py-5">
+                <span className="text-3xl font-extrabold tracking-tight text-[#1F2937]">
                   {course.price}
+                </span>
+
+                <span className="ml-2 text-sm text-slate-500">
+                  course fee
                 </span>
               </div>
 
-              {/* Divider */}
-              <div className="my-6 border-t border-gray-100" />
-
               {/* Features */}
-              <ul className="flex flex-1 flex-col gap-4">
-                {course.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-3 text-sm text-gray-600"
-                  >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-green-50">
-                      <Check className="h-3.5 w-3.5 text-green-600" />
-                    </span>
+              <div className="mt-6 flex-1">
+                <p className="text-sm font-semibold text-[#1F2937]">
+                  Course includes:
+                </p>
 
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+                <ul className="mt-4 space-y-3">
+                  {course.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-3 text-sm leading-6 text-slate-600"
+                    >
+                      <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-50 text-[#1E40AF]">
+                        <Check size={13} strokeWidth={3} />
+                      </span>
+
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
               {/* CTA */}
-              <div className="mt-8">
-                <PrimaryButton className="w-full justify-center">
-                  Enquire Now
-                </PrimaryButton>
-              </div>
-            </div>
+              <a
+                href="#contact"
+                className={`mt-8 flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300 ${
+                  index === 1
+                    ? "bg-[#1E40AF] text-white hover:bg-blue-800"
+                    : "border border-slate-200 bg-white text-[#1E40AF] hover:border-[#1E40AF] hover:bg-blue-50"
+                }`}
+              >
+                Enquire About Course
+              </a>
+            </article>
           ))}
         </div>
 
         {/* Bottom Note */}
-        <div className="mx-auto mt-10 max-w-3xl rounded-2xl bg-blue-50 p-5 text-center">
-          <p className="text-sm leading-6 text-[#1E40AF]">
-            Course fees and duration may vary depending on the learner's
-            requirements. Contact us for the latest package details.
+        <div className="mt-8 text-center">
+          <p className="text-sm text-slate-500">
+            Need help choosing a course?{" "}
+            <a
+              href="#contact"
+              className="font-semibold text-[#1E40AF] hover:underline"
+            >
+              Contact us
+            </a>{" "}
+            and we'll help you choose the right program.
           </p>
         </div>
+
       </div>
     </section>
   );
