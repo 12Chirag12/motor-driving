@@ -1,18 +1,19 @@
 import {
   ArrowRight,
-  CheckCircle2,
 } from "lucide-react";
 
 import { whyChoose } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Container from "@/components/shared/Container";
 
 export default function WhyChoose() {
   return (
-    <section className="bg-slate-50 px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto w-full max-w-7xl">
+    <section className="bg-slate-50 py-16 lg:py-20">
+      <Container>
 
         <SectionHeading
           title="Why Choose Mangesh Motor?"
+          eyebrow="Why Learners Trust Us"
           subtitle="Everything you need to learn driving safely, confidently and comfortably."
         />
 
@@ -21,10 +22,11 @@ export default function WhyChoose() {
             const Icon = item.icon;
 
             return (
-              <div
+              <article
                 key={item.title}
-                className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
               >
+                <div className="absolute inset-y-0 left-0 w-1 origin-bottom scale-y-0 bg-[#FACC15] transition-transform duration-300 group-hover:scale-y-100" />
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#1E40AF] transition-all duration-300 group-hover:bg-[#1E40AF] group-hover:text-white">
                     <Icon size={23} />
@@ -41,11 +43,7 @@ export default function WhyChoose() {
                   </div>
                 </div>
 
-                <div className="mt-5 flex items-center gap-2 text-xs font-semibold text-[#1E40AF] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <CheckCircle2 size={15} />
-                  Trusted by learners
-                </div>
-              </div>
+              </article>
             );
           })}
         </div>
@@ -71,7 +69,7 @@ export default function WhyChoose() {
           </a>
         </div>
 
-      </div>
+      </Container>
     </section>
   );
 }

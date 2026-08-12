@@ -1,15 +1,17 @@
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 
 import { testimonials } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Container from "@/components/shared/Container";
 
 export default function Testimonials() {
   return (
-    <section className="bg-slate-50 px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto w-full max-w-7xl">
+    <section className="bg-white py-16 lg:py-20">
+      <Container>
 
         <SectionHeading
           title="What Our Students Say"
+          eyebrow="Learner Experiences"
           subtitle="Real experiences from learners who trained with Mangesh Motor Driving School."
         />
 
@@ -19,13 +21,8 @@ export default function Testimonials() {
               key={testimonial.name}
               className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-7"
             >
-              {/* Quote Icon */}
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 text-[#1E40AF]">
-                <Quote size={21} />
-              </div>
-
               {/* Rating */}
-              <div className="mt-5 flex items-center gap-1">
+              <div className="flex items-center gap-1" aria-label={`${testimonial.rating} out of 5 stars`}>
                 {Array.from({ length: testimonial.rating }).map((_, index) => (
                   <Star
                     key={index}
@@ -37,7 +34,7 @@ export default function Testimonials() {
 
               {/* Review */}
               <p className="mt-5 flex-1 text-sm leading-7 text-slate-600">
-                “{testimonial.review}”
+                {testimonial.review}
               </p>
 
               {/* Student */}
@@ -90,7 +87,7 @@ export default function Testimonials() {
           </div>
         </div>
 
-      </div>
+      </Container>
     </section>
   );
 }

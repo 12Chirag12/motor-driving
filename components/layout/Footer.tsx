@@ -1,178 +1,61 @@
+import Image from "next/image";
 import Link from "next/link";
-import {
-  Clock3,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { Clock3, Mail, MapPin, Phone } from "lucide-react";
 
-import { contactData } from "@/lib/data";
+import Container from "@/components/shared/Container";
+import { contactData, navItems } from "@/lib/data";
 
-const quickLinks = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Courses", href: "/courses" },
-  { name: "RTO Services", href: "/rto-services" },
-  { name: "Insurance", href: "/insurance" },
-  { name: "PUC", href: "/puc" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Contact", href: "/contact" },
-];
-
-const services = [
-  "Driving Training",
-  "Driving Licence Assistance",
-  "Vehicle Insurance",
-  "PUC Certificate",
-  "2/3/4 Wheeler Licence",
+const serviceLinks = [
+  { name: "Driving Courses", href: "#courses" },
+  { name: "RTO Assistance", href: "#rto-services" },
+  { name: "Vehicle Insurance", href: "#insurance" },
+  { name: "PUC Certificate", href: "#puc" },
 ];
 
 export default function Footer() {
-  const phone = contactData?.phone ?? "";
-  const email = contactData?.email ?? "";
-  const address = contactData?.address ?? "";
-  const timings = contactData?.timings ?? "";
-
   return (
     <footer className="bg-[#1F2937] text-white">
-      {/* Main Footer */}
-      <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-          
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#1E40AF] text-xl font-bold">
-                M
-              </div>
-
-              <div>
-                <h2 className="text-lg font-bold">
-                  Mangesh Motor
-                </h2>
-
-                <p className="text-sm text-gray-400">
-                  Driving School
-                </p>
-              </div>
+      <Container className="py-12 lg:py-14">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_0.8fr_0.9fr_1.2fr] lg:gap-8">
+          <div>
+            <Link href="#home" className="inline-flex items-center gap-3" aria-label="Back to home">
+              <span className="relative h-12 w-12 overflow-hidden rounded-full bg-white"><Image src="/images/logo/logo.PNG" alt="" fill sizes="48px" className="object-contain p-0.5" /></span>
+              <span><span className="block font-bold">Mangesh Motor</span><span className="text-xs text-slate-400">Driving School</span></span>
             </Link>
-
-            <p className="mt-6 max-w-xs text-sm leading-6 text-gray-400">
-              Professional driving training, licence assistance,
-              insurance and PUC services under one roof.
-            </p>
-
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex rounded-xl bg-[#F97316] px-5 py-3 font-semibold text-white transition-all duration-300 hover:scale-105 hover:bg-orange-600"
-            >
-              Book a Driving Lesson
-            </Link>
+            <p className="mt-5 max-w-sm text-sm leading-6 text-slate-400">Safe driving lessons and dependable licence, insurance and PUC assistance for learners and vehicle owners in Palghar.</p>
+            <a href="#contact" className="mt-5 inline-flex min-h-10 items-center rounded-xl bg-[#F97316] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-orange-600">Book a Driving Lesson</a>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold">
-              Quick Links
-            </h3>
-
-            <ul className="mt-5 space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-gray-400 transition-colors hover:text-[#FACC15]"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
+            <h2 className="text-sm font-bold uppercase tracking-wider text-white">Quick Links</h2>
+            <ul className="mt-4 space-y-2.5">
+              {navItems.slice(0, 4).map((link) => <li key={link.href}><Link href={link.href} className="text-sm text-slate-400 transition-colors hover:text-[#FACC15]">{link.name}</Link></li>)}
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h3 className="text-lg font-bold">
-              Our Services
-            </h3>
-
-            <ul className="mt-5 space-y-3">
-              {services.map((service) => (
-                <li
-                  key={service}
-                  className="text-sm text-gray-400"
-                >
-                  {service}
-                </li>
-              ))}
+            <h2 className="text-sm font-bold uppercase tracking-wider text-white">Services</h2>
+            <ul className="mt-4 space-y-2.5">
+              {serviceLinks.map((link) => <li key={link.href}><Link href={link.href} className="text-sm text-slate-400 transition-colors hover:text-[#FACC15]">{link.name}</Link></li>)}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="text-lg font-bold">
-              Contact Us
-            </h3>
-
-            <div className="mt-5 space-y-5">
-              {/* Phone */}
-              <a
-                href={phone ? `tel:${phone}` : undefined}
-                className="flex items-start gap-3 text-sm text-gray-400 transition-colors hover:text-white"
-              >
-                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-[#FACC15]" />
-
-                <span>
-                  {phone}
-                </span>
-              </a>
-
-              {/* Email */}
-              <a
-                href={email ? `mailto:${email}` : undefined}
-                className="flex items-start gap-3 text-sm text-gray-400 transition-colors hover:text-white"
-              >
-                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-[#FACC15]" />
-
-                <span className="break-all">
-                  {email}
-                </span>
-              </a>
-
-              {/* Address */}
-              <div className="flex items-start gap-3 text-sm text-gray-400">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#FACC15]" />
-
-                <span>
-                  {address}
-                </span>
-              </div>
-
-              {/* Hours */}
-              <div className="flex items-start gap-3 text-sm text-gray-400">
-                <Clock3 className="mt-0.5 h-5 w-5 shrink-0 text-[#FACC15]" />
-
-                <span>
-                  {timings}
-                </span>
-              </div>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-white">Contact</h2>
+            <div className="mt-4 space-y-3.5 text-sm text-slate-400">
+              <a href={`tel:${contactData.phone.replace(/\s/g, "")}`} className="flex items-start gap-3 hover:text-white"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#FACC15]" />{contactData.phone}</a>
+              <a href={`mailto:${contactData.email}`} className="flex items-start gap-3 break-all hover:text-white"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#FACC15]" />{contactData.email}</a>
+              <p className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#FACC15]" />{contactData.address}</p>
+              <p className="flex items-start gap-3"><Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-[#FACC15]" />{contactData.timings}</p>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom Bar */}
+      </Container>
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-sm text-gray-400 md:flex-row md:items-center md:justify-between lg:px-8">
-          <p>
-            © {new Date().getFullYear()} Mangesh Motor Driving School.
-            All rights reserved.
-          </p>
-
-          <p>
-            Professional Driving Training & RTO Services
-          </p>
-        </div>
+        <Container className="flex flex-col gap-2 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Mangesh Motor Driving School. All rights reserved.</p>
+          <p>Safe training · Reliable local support</p>
+        </Container>
       </div>
     </footer>
   );

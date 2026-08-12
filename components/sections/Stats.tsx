@@ -1,32 +1,27 @@
 import { stats } from "@/lib/data";
+import Container from "@/components/shared/Container";
 
 export default function Stats() {
   return (
-    <section className="bg-white px-5 py-10 sm:px-6 lg:px-8">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm lg:grid-cols-4">
-        {stats.map((stat, index) => (
-          <div
-            key={stat.label}
-            className={`flex flex-col items-center justify-center px-4 py-7 text-center sm:px-6 ${
-              index !== stats.length - 1
-                ? "border-b border-slate-200 lg:border-b-0 lg:border-r"
-                : ""
-            } ${
-              index === 0 || index === 2
-                ? "border-r border-slate-200"
-                : ""
-            }`}
-          >
-            <p className="text-3xl font-extrabold tracking-tight text-[#1E40AF] sm:text-4xl">
-              {stat.value}
-            </p>
+    <section className="relative z-10 -mt-8 bg-transparent pb-10 sm:-mt-10 sm:pb-12" aria-label="Driving school statistics">
+      <Container>
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-[0_18px_45px_-24px_rgba(15,23,42,0.35)] lg:grid-cols-4">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="flex flex-col items-center justify-center bg-white px-3 py-5 text-center sm:px-6 sm:py-6"
+            >
+              <p className="text-2xl font-extrabold tracking-tight text-[#1E40AF] sm:text-3xl">
+                {stat.value}
+              </p>
 
-            <p className="mt-2 text-sm font-medium text-slate-600 sm:text-base">
-              {stat.label}
-            </p>
-          </div>
-        ))}
-      </div>
+              <p className="mt-1.5 text-xs font-semibold text-slate-600 sm:text-sm">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 }

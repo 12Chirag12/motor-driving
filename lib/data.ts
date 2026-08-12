@@ -8,6 +8,13 @@ import {
   UserCheck,
   CarFront,
   Wallet,
+  ClipboardCheck,
+  Headphones,
+  RefreshCcw,
+  ScrollText,
+  Sparkles,
+  CalendarCheck2,
+  Route,
 } from "lucide-react";
 
 export const navItems = [
@@ -47,6 +54,29 @@ export const services = [
     icon: Bike,
     description: "License assistance for all vehicle categories.",
   },
+  {
+    title: "Refresher Training",
+    icon: Route,
+    description: "Focused road practice to rebuild confidence and driving skills.",
+  },
+];
+
+export const aboutHighlights = [
+  {
+    title: "Patient, practical coaching",
+    description: "Clear step-by-step guidance for first-time and nervous learners.",
+    icon: Headphones,
+  },
+  {
+    title: "Road-ready training",
+    description: "Real traffic, parking and everyday road-safety practice.",
+    icon: CarFront,
+  },
+  {
+    title: "Support beyond lessons",
+    description: "Helpful guidance for licences, insurance and PUC documentation.",
+    icon: ClipboardCheck,
+  },
 ];
 
 export const stats = [
@@ -60,49 +90,49 @@ export const fleet = [
   {
     id: 1,
     name: "Maruti Alto",
-    image: "/images/fleet/alto.jpg",
+    image: "/images/training/white-training-car.jpg",
     transmission: "Manual",
     badge: "Dual Control",
   },
   {
     id: 2,
     name: "Maruti WagonR",
-    image: "/images/fleet/wagonr.jpg",
+    image: "/images/training/practice-hatchback.jpg",
     transmission: "Manual",
     badge: "Dual Control",
   },
   {
     id: 3,
     name: "Hyundai Santro",
-    image: "/images/fleet/santro.jpg",
+    image: "/images/training/practice-hatchback.jpg",
     transmission: "Manual",
     badge: "Dual Control",
   },
   {
     id: 4,
     name: "Maruti Swift",
-    image: "/images/fleet/swift.jpg",
+    image: "/images/training/red-training-car.jpg",
     transmission: "Manual",
     badge: "Dual Control",
   },
   {
     id: 5,
     name: "Tata Tiago",
-    image: "/images/fleet/tiago.jpg",
+    image: "/images/training/white-training-car.jpg",
     transmission: "Manual",
     badge: "Dual Control",
   },
   {
     id: 6,
     name: "Maruti Dzire",
-    image: "/images/fleet/dzire.jpg",
+    image: "/images/training/training-sedan.jpg",
     transmission: "Manual",
     badge: "Dual Control",
   },
   {
     id: 7,
     name: "Auto Rickshaw",
-    image: "/images/fleet/auto.jpg",
+    image: "/images/training/auto-rickshaw.jpg",
     transmission: "Manual",
     badge: "RTO Training",
   },
@@ -175,6 +205,58 @@ export const courses = [
     ],
   },
 ];
+
+export const trainingSteps = [
+  {
+    step: "01",
+    title: "Choose your course",
+    description: "Tell us your experience and learning goal. We will recommend the right program.",
+    icon: ClipboardCheck,
+  },
+  {
+    step: "02",
+    title: "Book a convenient slot",
+    description: "Select a practical morning, afternoon or evening training time.",
+    icon: CalendarCheck2,
+  },
+  {
+    step: "03",
+    title: "Learn on real roads",
+    description: "Build control, road awareness and test confidence with patient guidance.",
+    icon: CarFront,
+  },
+];
+
+export const documentServices = [
+  {
+    id: "rto-services",
+    eyebrow: "Licence & RTO",
+    title: "Clear support at every licence step",
+    description: "Get practical help understanding the process and preparing the documents needed for learner and permanent driving licence applications.",
+    icon: ScrollText,
+    items: ["Learner's licence guidance", "Permanent licence assistance", "2, 3 and 4-wheeler categories", "RTO test preparation"],
+    cta: "Apply for Licence",
+  },
+  {
+    id: "insurance",
+    eyebrow: "Vehicle Insurance",
+    title: "Simple insurance and renewal assistance",
+    description: "We help car and two-wheeler owners understand renewal requirements and complete the process without unnecessary confusion.",
+    icon: RefreshCcw,
+    items: ["New policy assistance", "Policy renewal support", "Car and two-wheeler cover", "Document checklist guidance"],
+    cta: "Enquire About Insurance",
+  },
+  {
+    id: "puc",
+    eyebrow: "PUC Certificate",
+    title: "Keep your vehicle compliance up to date",
+    description: "Get straightforward assistance for Pollution Under Control certification so your vehicle documents remain current.",
+    icon: Sparkles,
+    items: ["PUC certificate assistance", "Renewal guidance", "Quick document check", "Support for multiple vehicle types"],
+    cta: "Enquire About PUC",
+  },
+];
+
 export const testimonials = [
   {
     name: "Rahul Patil",
@@ -218,28 +300,28 @@ export const heroData = {
 };
 export const gallery = [
   {
-    image: "/images/gallery/training-1.jpg",
-    title: "Driving Training",
+    image: "/images/training/learner-with-instructor.jpg",
+    title: "One-to-One Driving Training",
   },
   {
-    image: "/images/gallery/training-2.jpg",
-    title: "Practical Driving Session",
+    image: "/images/training/white-training-car.jpg",
+    title: "On-Road Practice",
   },
   {
-    image: "/images/gallery/training-3.jpg",
-    title: "Learner Training",
+    image: "/images/training/practice-hatchback.jpg",
+    title: "Safe Parking Practice",
   },
   {
-    image: "/images/gallery/training-4.jpg",
-    title: "Road Practice",
+    image: "/images/training/auto-rickshaw.jpg",
+    title: "Auto Rickshaw Training",
   },
   {
-    image: "/images/gallery/training-5.jpg",
-    title: "Driving School",
+    image: "/images/training/steering-guidance.jpg",
+    title: "Patient Instructor Guidance",
   },
   {
-    image: "/images/gallery/training-6.jpg",
-    title: "Training Fleet",
+    image: "/images/training/successful-learners.jpg",
+    title: "Confident Learners",
   },
 ];
 export const contactData = {

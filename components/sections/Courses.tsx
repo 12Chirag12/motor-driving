@@ -2,14 +2,16 @@ import { Check, Clock3 } from "lucide-react";
 
 import { courses } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Container from "@/components/shared/Container";
 
 export default function Courses() {
   return (
-    <section className="bg-white px-5 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <div className="mx-auto w-full max-w-7xl">
+    <section id="courses" className="bg-white py-16 lg:py-20">
+      <Container>
 
         <SectionHeading
           title="Driving Courses"
+          eyebrow="Choose Your Course"
           subtitle="Choose the training program that best matches your driving experience and goals."
         />
 
@@ -19,10 +21,11 @@ export default function Courses() {
               key={course.title}
               className={`relative flex h-full flex-col rounded-2xl border bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-7 ${
                 index === 1
-                  ? "border-[#1E40AF] ring-1 ring-[#1E40AF]/10"
+                  ? "border-[#1E40AF] bg-gradient-to-b from-blue-50/70 via-white to-white ring-1 ring-[#1E40AF]/10"
                   : "border-slate-200"
               }`}
             >
+              <div className={`absolute inset-x-6 top-0 h-1 rounded-b-full ${index === 1 ? "bg-[#1E40AF]" : "bg-slate-100"}`} />
               {/* Popular badge */}
               {index === 1 && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#1E40AF] px-4 py-1.5 text-xs font-bold text-white shadow-sm">
@@ -32,8 +35,8 @@ export default function Courses() {
 
               {/* Course Header */}
               <div>
-                <p className="text-sm font-semibold text-[#1E40AF]">
-                  Driving Program
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#1E40AF]">
+                  {index === 0 ? "Best for beginners" : index === 1 ? "Complete preparation" : "Build confidence again"}
                 </p>
 
                 <h3 className="mt-2 text-xl font-bold tracking-tight text-[#1F2937] sm:text-2xl">
@@ -84,8 +87,8 @@ export default function Courses() {
                 href="#contact"
                 className={`mt-8 flex w-full items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300 ${
                   index === 1
-                    ? "bg-[#1E40AF] text-white hover:bg-blue-800"
-                    : "border border-slate-200 bg-white text-[#1E40AF] hover:border-[#1E40AF] hover:bg-blue-50"
+                    ? "bg-[#F97316] text-white hover:bg-orange-600"
+                    : "border border-orange-200 bg-orange-50 text-[#C2410C] hover:border-[#F97316] hover:bg-orange-100"
                 }`}
               >
                 Enquire About Course
@@ -104,11 +107,11 @@ export default function Courses() {
             >
               Contact us
             </a>{" "}
-            and we'll help you choose the right program.
+            and we will help you choose the right program.
           </p>
         </div>
 
-      </div>
+      </Container>
     </section>
   );
 }

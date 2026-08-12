@@ -1,253 +1,116 @@
-import {
-  Clock3,
-  Mail,
-  MapPin,
-  MessageCircle,
-  Phone,
-} from "lucide-react";
+"use client";
 
-import SectionHeading from "@/components/ui/SectionHeading";
+import type { FormEvent } from "react";
+import { useState } from "react";
+import { ArrowUpRight, Clock3, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
+
+import Container from "@/components/shared/Container";
 import PrimaryButton from "@/components/ui/PrimaryButton";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { contactData } from "@/lib/data";
 
+type FormErrors = { name?: string; phone?: string; service?: string };
+
+const fieldClass = "min-h-12 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-[#1F2937] outline-none transition placeholder:text-slate-400 focus:border-[#1E40AF] focus:ring-3 focus:ring-blue-100";
+
 export default function Contact() {
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const name = String(form.get("name") ?? "").trim();
+    const phone = String(form.get("phone") ?? "").trim();
+    const service = String(form.get("service") ?? "").trim();
+    const message = String(form.get("message") ?? "").trim();
+    const nextErrors: FormErrors = {};
+
+    if (name.length < 2) nextErrors.name = "Please enter your name.";
+    if (phone.replace(/\D/g, "").length < 10) nextErrors.phone = "Please enter a valid phone number.";
+    if (!service) nextErrors.service = "Please select a service.";
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) return;
+
+    const enquiry = [
+      "Hello Mangesh Motor Driving School,",
+      `My name is ${name}.`,
+      `Phone: ${phone}`,
+      `I am interested in: ${service}.`,
+      message ? `Message: ${message}` : "",
+    ].filter(Boolean).join("\n");
+
+    window.open(`https://wa.me/${contactData.whatsapp}?text=${encodeURIComponent(enquiry)}`, "_blank", "noopener,noreferrer");
+  }
+
+  const contactItems = [
+    { label: "Call Us", value: contactData.phone, href: `tel:${contactData.phone.replace(/\s/g, "")}`, icon: Phone },
+    { label: "WhatsApp", value: "Chat with our team", href: `https://wa.me/${contactData.whatsapp}`, icon: MessageCircle, external: true },
+    { label: "Email", value: contactData.email, href: `mailto:${contactData.email}`, icon: Mail },
+  ];
+
   return (
-    <section className="bg-gray-50 py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <SectionHeading
-          title="Get in Touch"
-          subtitle="Ready to learn driving? Contact Mangesh Motor Driving School today."
-        />
-
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {/* Contact Information */}
-          <div className="rounded-2xl bg-[#1E40AF] p-8 text-white md:p-10">
-            <h3 className="text-2xl font-bold md:text-3xl">
-              Let's Start Your Driving Journey
-            </h3>
-
-            <p className="mt-4 max-w-lg leading-7 text-blue-100">
-              Get professional driving training, licence assistance,
-              insurance and PUC services under one roof.
-            </p>
-
-            <div className="mt-8 space-y-6">
-              {/* Phone */}
-              <a
-                href={`tel:${contactData.phone}`}
-                className="flex items-start gap-4 rounded-xl p-3 transition-colors hover:bg-white/10"
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                  <Phone className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <p className="text-sm text-blue-200">Call Us</p>
-                  <p className="mt-1 font-semibold">
-                    {contactData.phone}
-                  </p>
-                </div>
-              </a>
-
-              {/* WhatsApp */}
-              <a
-                href={`https://wa.me/${contactData.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 rounded-xl p-3 transition-colors hover:bg-white/10"
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                  <MessageCircle className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <p className="text-sm text-blue-200">WhatsApp</p>
-                  <p className="mt-1 font-semibold">
-                    Chat With Us
-                  </p>
-                </div>
-              </a>
-
-              {/* Email */}
-              <a
-                href={`mailto:${contactData.email}`}
-                className="flex items-start gap-4 rounded-xl p-3 transition-colors hover:bg-white/10"
-              >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                  <Mail className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <p className="text-sm text-blue-200">Email</p>
-                  <p className="mt-1 font-semibold break-all">
-                    {contactData.email}
-                  </p>
-                </div>
-              </a>
-
-              {/* Address */}
-              <div className="flex items-start gap-4 rounded-xl p-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                  <MapPin className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <p className="text-sm text-blue-200">Visit Us</p>
-                  <p className="mt-1 leading-6 font-semibold">
-                    {contactData.address}
-                  </p>
-                </div>
+    <section id="contact" className="bg-white py-16 lg:py-20">
+      <Container>
+        <SectionHeading eyebrow="Contact Us" title="Ready to start driving?" subtitle="Speak with our team about driving lessons, licence assistance, insurance or PUC services." />
+        <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="overflow-hidden rounded-2xl bg-[#1E40AF] text-white shadow-sm">
+            <div className="p-6 sm:p-8">
+              <h3 className="text-2xl font-bold">Let’s plan your next step</h3>
+              <p className="mt-3 max-w-lg text-sm leading-7 text-blue-100">Call, message or visit us in Palghar. We’ll help you choose the right training or vehicle service.</p>
+              <div className="mt-7 space-y-2">
+                {contactItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a key={item.label} href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} className="flex items-center gap-4 rounded-xl p-3 transition-colors hover:bg-white/10">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10"><Icon className="h-5 w-5" /></span>
+                      <span className="min-w-0"><span className="block text-xs text-blue-200">{item.label}</span><span className="mt-1 block break-words text-sm font-bold">{item.value}</span></span>
+                    </a>
+                  );
+                })}
               </div>
-
-              {/* Timings */}
-              <div className="flex items-start gap-4 rounded-xl p-3">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
-                  <Clock3 className="h-5 w-5" />
-                </div>
-
-                <div>
-                  <p className="text-sm text-blue-200">
-                    Opening Hours
-                  </p>
-                  <p className="mt-1 font-semibold">
-                    {contactData.timings}
-                  </p>
-                </div>
+              <div className="mt-6 border-t border-white/15 pt-6">
+                <div className="flex items-start gap-3"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#FACC15]" /><p className="text-sm leading-6 text-blue-50">{contactData.address}</p></div>
+                <div className="mt-4 flex items-start gap-3"><Clock3 className="mt-0.5 h-5 w-5 shrink-0 text-[#FACC15]" /><p className="text-sm leading-6 text-blue-50">{contactData.timings}</p></div>
+                <a href={contactData.mapUrl} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-white hover:text-[#FACC15]">Open location in Maps <ArrowUpRight className="h-4 w-4" /></a>
               </div>
             </div>
           </div>
 
-          {/* Enquiry Card */}
-          <div className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm md:p-10">
-            <h3 className="text-2xl font-bold text-[#1F2937]">
-              Send an Enquiry
-            </h3>
-
-            <p className="mt-2 text-gray-600">
-              Fill in your details and we'll get back to you.
-            </p>
-
-            <form className="mt-8 space-y-5">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="mb-2 block text-sm font-semibold text-[#1F2937]"
-                >
-                  Your Name
-                </label>
-
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="Enter your name"
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#1E40AF] focus:ring-2 focus:ring-blue-100"
-                />
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h3 className="text-2xl font-bold text-[#1F2937]">Send an enquiry</h3>
+            <p className="mt-2 text-sm leading-6 text-slate-600">Complete the form and continue the conversation securely on WhatsApp.</p>
+            <form className="mt-7 space-y-5" onSubmit={handleSubmit} noValidate>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="name" className="mb-2 block text-sm font-bold text-[#1F2937]">Your name</label>
+                  <input id="name" name="name" autoComplete="name" placeholder="Enter your name" className={fieldClass} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} />
+                  {errors.name && <p id="name-error" className="mt-1.5 text-xs font-medium text-red-600">{errors.name}</p>}
+                </div>
+                <div>
+                  <label htmlFor="phone" className="mb-2 block text-sm font-bold text-[#1F2937]">Phone number</label>
+                  <input id="phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="e.g. 98765 43210" className={fieldClass} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} />
+                  {errors.phone && <p id="phone-error" className="mt-1.5 text-xs font-medium text-red-600">{errors.phone}</p>}
+                </div>
               </div>
-
               <div>
-                <label
-                  htmlFor="phone"
-                  className="mb-2 block text-sm font-semibold text-[#1F2937]"
-                >
-                  Phone Number
-                </label>
-
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  placeholder="Enter your phone number"
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#1E40AF] focus:ring-2 focus:ring-blue-100"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="service"
-                  className="mb-2 block text-sm font-semibold text-[#1F2937]"
-                >
-                  Service
-                </label>
-
-                <select
-                  id="service"
-                  name="service"
-                  defaultValue=""
-                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-[#1E40AF] focus:ring-2 focus:ring-blue-100"
-                >
-                  <option value="" disabled>
-                    Select a service
-                  </option>
-                  <option value="driving-training">
-                    Driving Training
-                  </option>
-                  <option value="driving-license">
-                    Driving Licence
-                  </option>
-                  <option value="insurance">
-                    Insurance
-                  </option>
-                  <option value="puc">
-                    PUC
-                  </option>
-                  <option value="other">
-                    Other
-                  </option>
+                <label htmlFor="service" className="mb-2 block text-sm font-bold text-[#1F2937]">Service</label>
+                <select id="service" name="service" defaultValue="" className={fieldClass} aria-invalid={Boolean(errors.service)} aria-describedby={errors.service ? "service-error" : undefined}>
+                  <option value="" disabled>Select a service</option>
+                  <option>Driving Training</option><option>Driving Licence</option><option>Insurance</option><option>PUC Certificate</option><option>Other</option>
                 </select>
+                {errors.service && <p id="service-error" className="mt-1.5 text-xs font-medium text-red-600">{errors.service}</p>}
               </div>
-
               <div>
-                <label
-                  htmlFor="message"
-                  className="mb-2 block text-sm font-semibold text-[#1F2937]"
-                >
-                  Message
-                </label>
-
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  placeholder="Tell us what you need..."
-                  className="w-full resize-none rounded-xl border border-gray-200 px-4 py-3 outline-none transition focus:border-[#1E40AF] focus:ring-2 focus:ring-blue-100"
-                />
+                <label htmlFor="message" className="mb-2 block text-sm font-bold text-[#1F2937]">Message <span className="font-normal text-slate-400">(optional)</span></label>
+                <textarea id="message" name="message" rows={4} placeholder="Tell us how we can help" className={`${fieldClass} resize-y`} />
               </div>
-
-              <PrimaryButton className="w-full justify-center">
-                Send Enquiry
-              </PrimaryButton>
+              <PrimaryButton type="submit" className="w-full sm:w-auto"><Send className="h-4 w-4" /> Send Enquiry on WhatsApp</PrimaryButton>
+              <p className="text-xs leading-5 text-slate-500" aria-live="polite">Your details stay in your browser and are only sent when you continue to WhatsApp.</p>
             </form>
           </div>
         </div>
-
-        {/* Map */}
-        <div className="mt-8 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
-          <div className="flex h-80 items-center justify-center bg-blue-50 p-6 text-center">
-            <div>
-              <MapPin className="mx-auto h-10 w-10 text-[#1E40AF]" />
-
-              <h3 className="mt-4 text-xl font-bold text-[#1F2937]">
-                Find Us on Google Maps
-              </h3>
-
-              <p className="mt-2 text-gray-600">
-                Replace the map link with the actual driving school
-                location.
-              </p>
-
-              <a
-                href={contactData.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex rounded-xl bg-[#F97316] px-6 py-3 font-semibold text-white transition-all duration-300 hover:scale-105"
-              >
-                Open Google Maps
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      </Container>
     </section>
   );
 }

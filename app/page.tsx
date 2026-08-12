@@ -1,129 +1,36 @@
-import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-
-import Hero from "@/components/sections/Hero";
-import Stats from "@/components/sections/Stats";
-import Services from "@/components/sections/Services";
-import Fleet from "@/components/sections/Fleet";
-import WhyChoose from "@/components/sections/WhyChoose";
-import Courses from "@/components/sections/Courses";
-import Testimonials from "@/components/sections/Testimonials";
-import Gallery from "@/components/sections/Gallery";
+import Navbar from "@/components/layout/Navbar";
+import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
+import Courses from "@/components/sections/Courses";
+import DocumentServices from "@/components/sections/DocumentServices";
+import Fleet from "@/components/sections/Fleet";
+import Gallery from "@/components/sections/Gallery";
+import Hero from "@/components/sections/Hero";
+import Services from "@/components/sections/Services";
+import Stats from "@/components/sections/Stats";
+import Testimonials from "@/components/sections/Testimonials";
+import TrainingProcess from "@/components/sections/TrainingProcess";
+import WhyChoose from "@/components/sections/WhyChoose";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-
-      <main className="w-full overflow-hidden">
-
-        {/* Home */}
-        <section id="home">
-          <Hero />
-        </section>
-
-        {/* Stats */}
+      <main>
+        <Hero />
         <Stats />
-
-        {/* About */}
-        <section
-          id="about"
-          className="scroll-mt-24 px-6 py-16"
-        >
-          <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-bold text-[#1F2937]">
-              About Mangesh Motor Driving School
-            </h2>
-
-            <p className="mt-4 max-w-3xl leading-7 text-gray-600">
-              Mangesh Motor Driving School provides professional driving
-              training and vehicle-related services with a focus on safe,
-              confident and responsible driving.
-            </p>
-          </div>
-        </section>
-
-        {/* Services */}
+        <About />
         <Services />
-
-        {/* Fleet */}
-        <Fleet />
-
-        {/* Why Choose Us */}
+        <Courses />
+        <TrainingProcess />
         <WhyChoose />
-
-        {/* Courses */}
-        <section id="courses" className="scroll-mt-24">
-          <Courses />
-        </section>
-
-        {/* RTO Services */}
-        <section
-          id="rto-services"
-          className="scroll-mt-24 bg-slate-50 px-6 py-16"
-        >
-          <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-bold text-[#1F2937]">
-              RTO Services
-            </h2>
-
-            <p className="mt-4 max-w-3xl leading-7 text-gray-600">
-              Get assistance with learner's licence, permanent driving
-              licence and other RTO-related services.
-            </p>
-          </div>
-        </section>
-
-        {/* Insurance */}
-        <section
-          id="insurance"
-          className="scroll-mt-24 px-6 py-16"
-        >
-          <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-bold text-[#1F2937]">
-              Insurance Services
-            </h2>
-
-            <p className="mt-4 max-w-3xl leading-7 text-gray-600">
-              Vehicle insurance assistance and renewal services for your
-              car, two-wheeler and other vehicles.
-            </p>
-          </div>
-        </section>
-
-        {/* PUC */}
-        <section
-          id="puc"
-          className="scroll-mt-24 bg-slate-50 px-6 py-16"
-        >
-          <div className="mx-auto max-w-7xl">
-            <h2 className="text-3xl font-bold text-[#1F2937]">
-              PUC Certificate
-            </h2>
-
-            <p className="mt-4 max-w-3xl leading-7 text-gray-600">
-              PUC certificate services to help keep your vehicle
-              documentation up to date.
-            </p>
-          </div>
-        </section>
-
-        {/* Testimonials */}
+        <Fleet />
+        <DocumentServices />
         <Testimonials />
-
-        {/* Gallery */}
-        <section id="gallery" className="scroll-mt-24">
-          <Gallery />
-        </section>
-
-        {/* Contact */}
-        <section id="contact" className="scroll-mt-24">
-          <Contact />
-        </section>
-
+        <Gallery />
+        <Contact />
       </main>
-
       <Footer />
     </>
   );

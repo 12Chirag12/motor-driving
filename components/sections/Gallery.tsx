@@ -3,16 +3,18 @@ import { ArrowRight } from "lucide-react";
 
 import { gallery } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
+import Container from "@/components/shared/Container";
 
 export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="bg-white px-5 py-16 sm:px-6 lg:px-8 lg:py-20"
+      className="bg-slate-50 py-16 lg:py-20"
     >
-      <div className="mx-auto w-full max-w-7xl">
+      <Container>
         <SectionHeading
           title="Our Gallery"
+          eyebrow="Inside Our Training"
           subtitle="A glimpse of our driving training sessions, vehicles and learning environment."
         />
 
@@ -69,7 +71,7 @@ export default function Gallery() {
             <ArrowRight size={17} />
           </a>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
