@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle2, Clock3, MessageCircle, ShieldCheck, UserCheck } from "lucide-react";
 
 import Container from "@/components/shared/Container";
+import AntigravityCursor from "@/components/ui/AntigravityCursor";
 import PrimaryButton from "@/components/shared/PrimaryButton";
 import { contactData, heroData } from "@/lib/data";
 
@@ -11,7 +12,8 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-0 h-1 bg-[#1E40AF]" />
       <div className="pointer-events-none absolute right-[-8rem] top-[-10rem] h-[34rem] w-[34rem] rounded-full bg-blue-100/70 blur-3xl" />
       <div className="pointer-events-none absolute bottom-[-10rem] left-[-8rem] h-80 w-80 rounded-full bg-yellow-100/50 blur-3xl" />
-      <Container className="relative grid items-center gap-12 py-14 pb-20 sm:py-16 sm:pb-24 lg:min-h-[660px] lg:grid-cols-[1.02fr_0.98fr] lg:gap-16 lg:py-20 lg:pb-24">
+      <AntigravityCursor />
+      <Container className="relative z-10 grid items-center gap-12 py-14 pb-20 sm:py-16 sm:pb-24 lg:min-h-[660px] lg:grid-cols-[1.02fr_0.98fr] lg:gap-16 lg:py-20 lg:pb-24">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-3.5 py-2 text-xs font-bold text-[#1E40AF] shadow-sm sm:text-sm">
             <ShieldCheck className="h-4 w-4" />
