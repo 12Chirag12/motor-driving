@@ -4,13 +4,14 @@ import { ArrowRight, CheckCircle2, Gauge, ShieldCheck } from "lucide-react";
 import { fleet } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export default function Fleet() {
   const cars = fleet.slice(0, 6);
   const autoRickshaw = fleet[6];
 
   return (
-    <section className="bg-white py-16 lg:py-20">
+    <AnimatedSection className="bg-white py-16 lg:py-20">
       <Container>
 
         {/* Section Heading */}
@@ -116,6 +117,6 @@ export default function Fleet() {
         )}
 
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

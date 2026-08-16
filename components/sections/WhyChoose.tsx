@@ -5,10 +5,11 @@ import {
 import { whyChoose } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export default function WhyChoose() {
   return (
-    <section className="bg-slate-50 py-16 lg:py-20">
+    <AnimatedSection className="bg-slate-50 py-16 lg:py-20">
       <Container>
 
         <SectionHeading
@@ -70,6 +71,6 @@ export default function WhyChoose() {
         </div>
 
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

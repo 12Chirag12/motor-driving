@@ -3,10 +3,11 @@ import { Check, Clock3 } from "lucide-react";
 import { courses } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export default function Courses() {
   return (
-    <section id="courses" className="bg-white py-16 lg:py-20">
+    <AnimatedSection id="courses" className="bg-white py-16 lg:py-20">
       <Container>
 
         <SectionHeading
@@ -112,6 +113,6 @@ export default function Courses() {
         </div>
 
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

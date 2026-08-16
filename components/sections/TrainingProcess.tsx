@@ -1,12 +1,13 @@
 import { ArrowRight } from "lucide-react";
 
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { trainingSteps } from "@/lib/data";
 
 export default function TrainingProcess() {
   return (
-    <section className="relative overflow-hidden bg-[#1E40AF] py-16 text-white lg:py-20">
+    <AnimatedSection className="relative overflow-hidden bg-[#1E40AF] py-16 text-white lg:py-20">
       <div className="pointer-events-none absolute -left-24 -top-24 h-64 w-64 rounded-full border-[48px] border-white/5" />
       <div className="pointer-events-none absolute -bottom-28 -right-20 h-72 w-72 rounded-full border-[52px] border-[#FACC15]/10" />
       <Container className="relative">
@@ -43,6 +44,6 @@ export default function TrainingProcess() {
           </a>
         </div>
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

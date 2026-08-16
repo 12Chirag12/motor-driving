@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ArrowUpRight, Clock3, Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { contactData } from "@/lib/data";
@@ -50,7 +51,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="bg-white py-16 lg:py-20">
+    <AnimatedSection id="contact" className="bg-white py-16 lg:py-20">
       <Container>
         <SectionHeading eyebrow="Contact Us" title="Ready to start driving?" subtitle="Speak with our team about driving lessons, licence assistance, insurance or PUC services." />
         <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
@@ -111,6 +112,6 @@ export default function Contact() {
           </div>
         </div>
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

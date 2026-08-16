@@ -2,13 +2,14 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle2, Clock3, MessageCircle, ShieldCheck, UserCheck } from "lucide-react";
 
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import AntigravityCursor from "@/components/ui/AntigravityCursor";
 import PrimaryButton from "@/components/shared/PrimaryButton";
 import { contactData, heroData } from "@/lib/data";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eff6ff_100%)]">
+    <AnimatedSection id="home" reveal="fade" className="relative overflow-hidden bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_50%,#eff6ff_100%)]">
       <div className="absolute inset-x-0 top-0 h-1 bg-[#1E40AF]" />
       <div className="pointer-events-none absolute right-[-8rem] top-[-10rem] h-[34rem] w-[34rem] rounded-full bg-blue-100/70 blur-3xl" />
       <div className="pointer-events-none absolute bottom-[-10rem] left-[-8rem] h-80 w-80 rounded-full bg-yellow-100/50 blur-3xl" />
@@ -70,6 +71,6 @@ export default function Hero() {
           </div>
         </div>
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

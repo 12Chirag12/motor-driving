@@ -4,10 +4,11 @@ import { ArrowRight } from "lucide-react";
 import { gallery } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export default function Gallery() {
   return (
-    <section
+    <AnimatedSection
       id="gallery"
       className="bg-slate-50 py-16 lg:py-20"
     >
@@ -72,6 +73,6 @@ export default function Gallery() {
           </a>
         </div>
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

@@ -1,11 +1,12 @@
 import { ArrowRight, Check } from "lucide-react";
 
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import { documentServices } from "@/lib/data";
 
 export default function DocumentServices() {
   return (
-    <section className="bg-slate-50 py-16 lg:py-20" aria-label="RTO, insurance and PUC services">
+    <AnimatedSection className="bg-slate-50 py-16 lg:py-20" aria-label="RTO, insurance and PUC services">
       <Container>
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#1E40AF]">Vehicle Services</p>
@@ -34,6 +35,6 @@ export default function DocumentServices() {
           })}
         </div>
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

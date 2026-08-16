@@ -3,10 +3,11 @@ import { Star } from "lucide-react";
 import { testimonials } from "@/lib/data";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export default function Testimonials() {
   return (
-    <section className="bg-white py-16 lg:py-20">
+    <AnimatedSection className="bg-white py-16 lg:py-20">
       <Container>
 
         <SectionHeading
@@ -88,6 +89,6 @@ export default function Testimonials() {
         </div>
 
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

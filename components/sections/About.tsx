@@ -2,12 +2,13 @@ import Image from "next/image";
 import { ArrowRight, BadgeCheck, Star } from "lucide-react";
 
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { aboutHighlights } from "@/lib/data";
 
 export default function About() {
   return (
-    <section id="about" className="bg-white py-16 lg:py-20">
+    <AnimatedSection id="about" className="bg-white py-16 lg:py-20">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
           <div className="relative mx-auto w-full max-w-xl lg:mx-0">
@@ -52,6 +53,6 @@ export default function About() {
           </div>
         </div>
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }

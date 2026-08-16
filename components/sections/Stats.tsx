@@ -1,9 +1,10 @@
 import { stats } from "@/lib/data";
 import Container from "@/components/shared/Container";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export default function Stats() {
   return (
-    <section className="relative z-10 -mt-8 bg-transparent pb-10 sm:-mt-10 sm:pb-12" aria-label="Driving school statistics">
+    <AnimatedSection reveal="lift" revealDelay={0.12} className="relative z-10 -mt-8 bg-transparent pb-10 sm:-mt-10 sm:pb-12" aria-label="Driving school statistics">
       <Container>
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-[0_18px_45px_-24px_rgba(15,23,42,0.35)] lg:grid-cols-4">
           {stats.map((stat) => (
@@ -22,6 +23,6 @@ export default function Stats() {
           ))}
         </div>
       </Container>
-    </section>
+    </AnimatedSection>
   );
 }
